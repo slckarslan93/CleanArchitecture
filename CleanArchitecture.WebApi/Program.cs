@@ -1,3 +1,5 @@
+using CleanArchitecture.Persistance.Context;
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(CleanArchitecture.Presentation.AssemblyReference).Assembly); //controller'larýn bulunduðu assembly'i ekliyoruz (artik presenrarion katmaninda olacak controller lar)
+
+string connectionString = builder.Configuration.GetConnectionString("SqlServer");
+
+builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(connectionString));
 
 builder.Services.AddOpenApi();
 
