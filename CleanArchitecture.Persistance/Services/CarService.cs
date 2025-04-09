@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using CleanArchitecture.Application.Features.CarFeatures.Commmands.CreateCar;
+using CleanArchitecture.Application.Features.CarFeatures.Queries.GetAllCar;
 using CleanArchitecture.Application.Services;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Persistance.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Persistance.Services;
 public sealed class CarService : ICarService
@@ -26,5 +28,11 @@ public sealed class CarService : ICarService
         Car car = _mapper.Map<Car>(request);
         await _context.Set<Car>().AddAsync(car, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task<IList<Car>> GetAllAsync(GetAllCarQuery request, CancellationToken cancellationToken)
+    {
+        IList<Car> cars = await _context.Set<Car>().ToListAsync(cancellationToken);
+        return cars;
     }
 }

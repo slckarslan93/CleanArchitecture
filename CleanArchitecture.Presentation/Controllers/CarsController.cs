@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CleanArchitecture.Application.Features.CarFeatures.Commmands.CreateCar;
+using CleanArchitecture.Application.Features.CarFeatures.Queries.GetAllCar;
 using CleanArchitecture.Domain.Dtos;
+using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Presentation.Abstraction;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -21,5 +23,12 @@ public sealed class CarsController : ApiController
     {
         MessageResponse response = await _mediator.Send(request, cancellationToken);
         return Ok(response);
+    }
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> GetAll(GetAllCarQuery request, CancellationToken cancellationToken)
+    {
+        IList<Car> cars = await _mediator.Send(request, cancellationToken); 
+        return Ok(cars);
     }
 }
