@@ -2,4 +2,4 @@
 using MediatR;
 
 namespace CleanArchitecture.Application.Features.CarFeatures.Commmands.CreateCar;
-public sealed record CreateCarCommand(string Name,string Model, int EnginePower) : IRequest<MessageResponse>;
+public sealed record CreateCarCommand(string Name, string Model, int EnginePower) : IRequest<MessageResponse>;

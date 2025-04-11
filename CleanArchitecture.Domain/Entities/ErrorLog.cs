@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CleanArchitecture.Domain.Abstractions;
+﻿using CleanArchitecture.Domain.Abstractions;
 
 namespace CleanArchitecture.Domain.Entities;
+
 public sealed class ErrorLog : Entity
 {
     public string ErrorMessage { get; set; }

@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CleanArchitecture.Domain.Dtos;
+﻿using CleanArchitecture.Domain.Dtos;
 using MediatR;
 
 namespace CleanArchitecture.Application.Features.AuthFeatures.Commands.Register;
-public sealed record RegisterCommand(string Email, string UserName,string NameLastName,string Password): IRequest<MessageResponse>;
-
+public sealed record RegisterCommand(string Email, string UserName, string NameLastName, string Password) : IRequest<MessageResponse>;

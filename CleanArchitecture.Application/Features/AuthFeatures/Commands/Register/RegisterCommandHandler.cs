@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CleanArchitecture.Application.Services;
+﻿using CleanArchitecture.Application.Services;
 using CleanArchitecture.Domain.Dtos;
 using MediatR;
 
 namespace CleanArchitecture.Application.Features.AuthFeatures.Commands.Register;
+
 public sealed class RegisterCommandHandler : IRequestHandler<RegisterCommand, MessageResponse>
 {
     private readonly IAuthService _authService;

@@ -7,5 +7,4 @@ public static class MiddlewareExtension
         app.UseMiddleware<ExceptionMiddleware>();
         return app;
     }
-
 }

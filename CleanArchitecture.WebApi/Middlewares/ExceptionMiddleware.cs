@@ -15,11 +15,11 @@ public sealed class ExceptionMiddleware : IMiddleware
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
-		try
-		{
-			await next(context);
+        try
+        {
+            await next(context);
         }
-		catch (Exception ex)
+        catch (Exception ex)
         {
             await LogExceptionToDatabaseAsync(ex, context.Request);
             await HandleExceptionAsync(context, ex);
@@ -30,7 +30,6 @@ public sealed class ExceptionMiddleware : IMiddleware
     {
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = 500;
-
 
         if (ex.GetType() == typeof(ValidationException))
         {
@@ -47,18 +46,19 @@ public sealed class ExceptionMiddleware : IMiddleware
             StatusCode = context.Response.StatusCode
         }.ToString());
     }
+
     private async Task LogExceptionToDatabaseAsync(Exception ex, HttpRequest request)
-    { 
+    {
         ErrorLog errorLog = new ErrorLog
         {
             ErrorMessage = ex.Message,
             StackTrace = ex.StackTrace,
             RequestPath = request.Path,
             RequestMethod = request.Method,
-            TimeStamp = DateTime.Now,   
+            TimeStamp = DateTime.Now,
         };
 
-        await _context.Set<ErrorLog>().AddAsync(errorLog,default);
-        await _context.SaveChangesAsync(default);   
+        await _context.Set<ErrorLog>().AddAsync(errorLog, default);
+        await _context.SaveChangesAsync(default);
     }
 }

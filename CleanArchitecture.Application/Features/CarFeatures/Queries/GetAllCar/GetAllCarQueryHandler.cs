@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CleanArchitecture.Application.Services;
+﻿using CleanArchitecture.Application.Services;
 using CleanArchitecture.Domain.Entities;
 using MediatR;
 
 namespace CleanArchitecture.Application.Features.CarFeatures.Queries.GetAllCar;
+
 public sealed class GetAllCarQueryHandler : IRequestHandler<GetAllCarQuery, IList<Car>>
 {
     private readonly ICarService _carService;
