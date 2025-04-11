@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CleanArchitecture.Application.Features.AuthFeatures.Commands.Register;
+﻿using CleanArchitecture.Application.Features.AuthFeatures.Commands.Register;
 using CleanArchitecture.Presentation.Abstraction;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.Presentation.Controllers;
+
 public sealed class AuthController : ApiController
 {
     public AuthController(IMediator mediator) : base(mediator)
@@ -16,9 +12,9 @@ public sealed class AuthController : ApiController
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> Register(RegisterCommand request ,CancellationToken cancellationToken)
+    public async Task<IActionResult> Register(RegisterCommand request, CancellationToken cancellationToken)
     {
-       var response = await _mediator.Send(request, cancellationToken);
+        var response = await _mediator.Send(request, cancellationToken);
         return Ok(response);
     }
 }

@@ -1,8 +1,5 @@
-﻿using System.Threading.Tasks;
-using CleanArchitecture.Application.Features.CarFeatures.Commmands.CreateCar;
-using CleanArchitecture.Application.Features.CarFeatures.Queries.GetAllCar;
+﻿using CleanArchitecture.Application.Features.CarFeatures.Commmands.CreateCar;
 using CleanArchitecture.Domain.Dtos;
-using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Presentation.Controllers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -34,8 +31,5 @@ namespace CleanArchitecture.UnitTest
             Assert.Equal(response, returnValue);
             mediatrMock.Verify(m => m.Send(createCarCommand, cancellationToken), Times.Once);
         }
-
-     
-
     }
 }

@@ -4,6 +4,7 @@ using CleanArchitecture.Application.Features.CarFeatures.Commmands.CreateCar;
 using CleanArchitecture.Domain.Entities;
 
 namespace CleanArchitecture.Persistance.Mappings;
+
 public sealed class MappingProfile : Profile
 {
     public MappingProfile()

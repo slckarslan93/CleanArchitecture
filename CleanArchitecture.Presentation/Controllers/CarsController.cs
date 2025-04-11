@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CleanArchitecture.Application.Features.CarFeatures.Commmands.CreateCar;
+﻿using CleanArchitecture.Application.Features.CarFeatures.Commmands.CreateCar;
 using CleanArchitecture.Application.Features.CarFeatures.Queries.GetAllCar;
 using CleanArchitecture.Domain.Dtos;
 using CleanArchitecture.Domain.Entities;
@@ -12,6 +7,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.Presentation.Controllers;
+
 public sealed class CarsController : ApiController
 {
     public CarsController(IMediator mediator) : base(mediator)
@@ -28,7 +24,7 @@ public sealed class CarsController : ApiController
     [HttpPost("[action]")]
     public async Task<IActionResult> GetAll(GetAllCarQuery request, CancellationToken cancellationToken)
     {
-        IList<Car> cars = await _mediator.Send(request, cancellationToken); 
+        IList<Car> cars = await _mediator.Send(request, cancellationToken);
         return Ok(cars);
     }
 }

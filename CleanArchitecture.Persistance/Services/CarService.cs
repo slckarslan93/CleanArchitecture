@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using CleanArchitecture.Application.Features.CarFeatures.Commmands.CreateCar;
 using CleanArchitecture.Application.Features.CarFeatures.Queries.GetAllCar;
 using CleanArchitecture.Application.Services;
@@ -12,6 +7,7 @@ using CleanArchitecture.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Persistance.Services;
+
 public sealed class CarService : ICarService
 {
     private readonly AppDbContext _context;

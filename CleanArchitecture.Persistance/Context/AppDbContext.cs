@@ -6,14 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Persistance.Context;
 
-public sealed class AppDbContext : IdentityDbContext<User,IdentityRole,string>
+public sealed class AppDbContext : IdentityDbContext<User, IdentityRole, string>
 {
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    { 
+    {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly); // entity configurationlarini katmandan otomatik alir
         modelBuilder.Ignore<IdentityUserLogin<string>>();
         modelBuilder.Ignore<IdentityUserRole<string>>();
@@ -36,5 +36,4 @@ public sealed class AppDbContext : IdentityDbContext<User,IdentityRole,string>
 
         return base.SaveChangesAsync(cancellationToken);
     }
-
 }
