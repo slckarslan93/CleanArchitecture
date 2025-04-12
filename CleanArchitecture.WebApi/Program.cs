@@ -4,6 +4,7 @@ using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Persistance.Context;
 using CleanArchitecture.Persistance.Services;
 using CleanArchitecture.WebApi.Middlewares;
+using CleanArchitecture.WebApi.OptionsSetup;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -18,7 +19,12 @@ builder.Services.AddAutoMapper(typeof(CleanArchitecture.Persistance.AssemblyRefe
 
 builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 
+builder.Services.ConfigureOptions<JwtOptionsSetup>(); //JWT ayarlarýný alýr ve ayarlar
+builder.Services.ConfigureOptions<JwtBearerOptionsSetup>();
+
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddAuthentication().AddJwtBearer();
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(CleanArchitecture.Presentation.AssemblyReference).Assembly); //controller'larýn bulunduðu assembly'i ekliyoruz (artik presenrarion katmaninda olacak controller lar)
