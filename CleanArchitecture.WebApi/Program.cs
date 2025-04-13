@@ -1,7 +1,8 @@
+using CleanArchitecture.Application.Abstractions;
 using CleanArchitecture.Application.Behaviors;
 using CleanArchitecture.Application.Services;
 using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Persistance.Context;
+using CleanArchitecture.Infrastructure.Authantication;
 using CleanArchitecture.Persistance.Services;
 using CleanArchitecture.WebApi.Middlewares;
 using CleanArchitecture.WebApi.OptionsSetup;
@@ -25,6 +26,8 @@ builder.Services.ConfigureOptions<JwtBearerOptionsSetup>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddAuthentication().AddJwtBearer();
+
+builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(CleanArchitecture.Presentation.AssemblyReference).Assembly); //controller'larýn bulunduðu assembly'i ekliyoruz (artik presenrarion katmaninda olacak controller lar)

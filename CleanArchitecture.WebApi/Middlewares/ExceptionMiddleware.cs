@@ -1,5 +1,4 @@
 ﻿using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Persistance.Context;
 using FluentValidation;
 
 namespace CleanArchitecture.WebApi.Middlewares;

@@ -1,4 +1,5 @@
-﻿using CleanArchitecture.Application.Features.AuthFeatures.Commands.Register;
+﻿using CleanArchitecture.Application.Features.AuthFeatures.Commands.Logın;
+using CleanArchitecture.Application.Features.AuthFeatures.Commands.Register;
 using CleanArchitecture.Presentation.Abstraction;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,13 @@ public sealed class AuthController : ApiController
     public async Task<IActionResult> Register(RegisterCommand request, CancellationToken cancellationToken)
     {
         var response = await _mediator.Send(request, cancellationToken);
+        return Ok(response);
+    }
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> Login(LoginCommand request, CancellationToken cancellationToken)
+    {
+        LoginCommandResponse response = await _mediator.Send(request, cancellationToken);
         return Ok(response);
     }
 }

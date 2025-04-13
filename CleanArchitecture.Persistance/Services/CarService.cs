@@ -3,7 +3,6 @@ using CleanArchitecture.Application.Features.CarFeatures.Commmands.CreateCar;
 using CleanArchitecture.Application.Features.CarFeatures.Queries.GetAllCar;
 using CleanArchitecture.Application.Services;
 using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Persistance.Services;
