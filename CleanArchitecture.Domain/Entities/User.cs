@@ -10,4 +10,6 @@ public sealed class User : IdentityUser<string>
     }
 
     public string FullName { get; set; }
+    public string RefreshToken { get; set; }
+    public DateTime? RefreshTokenExpires { get; set; }
 }
