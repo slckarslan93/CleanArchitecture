@@ -8,7 +8,6 @@ using CleanArchitecture.WebApi.Middlewares;
 using CleanArchitecture.WebApi.OptionsSetup;
 using FluentValidation;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -30,6 +29,12 @@ builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 
 builder.Services.AddAuthentication().AddJwtBearer();
 builder.Services.AddAuthorization();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials().SetIsOriginAllowed(policy => true));
+     
+});
 
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 
@@ -58,6 +63,7 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
+app.UseCors();
 app.UseMiddlewareExtension();
 
 app.UseHttpsRedirection();
