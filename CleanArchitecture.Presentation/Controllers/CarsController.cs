@@ -4,10 +4,10 @@ using CleanArchitecture.Domain.Dtos;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Presentation.Abstraction;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.Presentation.Controllers;
-
 public sealed class CarsController : ApiController
 {
     public CarsController(IMediator mediator) : base(mediator)
