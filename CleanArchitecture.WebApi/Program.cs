@@ -18,12 +18,15 @@ builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddTransient<ExceptionMiddleware>();
 builder.Services.AddAutoMapper(typeof(CleanArchitecture.Persistance.AssemblyReference).Assembly);
 
-builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddIdentity<User, Role>().AddEntityFrameworkStores<AppDbContext>();
 
 builder.Services.ConfigureOptions<JwtOptionsSetup>(); //JWT ayarlarýný alýr ve ayarlar
 builder.Services.ConfigureOptions<JwtBearerOptionsSetup>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 
 builder.Services.AddAuthentication().AddJwtBearer();
 builder.Services.AddAuthorization();
