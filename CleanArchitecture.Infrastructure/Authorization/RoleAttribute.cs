@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Claims;
 using CleanArchitecture.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace CleanArchitecture.Infrastructure.Authorization;
+
 public sealed class RoleAttribute : Attribute, IAuthorizationFilter
 {
     private readonly string _role;
@@ -29,10 +25,10 @@ public sealed class RoleAttribute : Attribute, IAuthorizationFilter
             return;
         }
         //var userId = Guid.Parse(userIdClaim.Value);
-        //var hasRole = _userRoleRepository.HasRoleAsync(userId, _role).Result; //kendi generic reponu yazinca eklersin methodu 
+        //var hasRole = _userRoleRepository.HasRoleAsync(userId, _role).Result; //kendi generic reponu yazinca eklersin methodu
         //if (!hasRole)
         //{
         //    context.Result = new ForbidResult();
-        }
     }
+}
 }

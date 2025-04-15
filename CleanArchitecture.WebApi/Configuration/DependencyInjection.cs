@@ -27,6 +27,4 @@ public static class DependencyInjection
             !typeInfo.IsInterface &&
             !typeInfo.IsAbstract;
     }
-
-
 }

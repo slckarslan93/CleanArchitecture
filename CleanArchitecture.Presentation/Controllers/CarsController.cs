@@ -5,7 +5,6 @@ using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Infrastructure.Authorization;
 using CleanArchitecture.Presentation.Abstraction;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.Presentation.Controllers;

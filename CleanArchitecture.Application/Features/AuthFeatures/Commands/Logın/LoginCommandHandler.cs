@@ -2,6 +2,7 @@
 using MediatR;
 
 namespace CleanArchitecture.Application.Features.AuthFeatures.Commands.Logın;
+
 public sealed class LoginCommandHandler : IRequestHandler<LoginCommand, LoginCommandResponse>
 {
     private readonly IAuthService _authService;

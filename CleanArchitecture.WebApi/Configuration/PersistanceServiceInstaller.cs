@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.WebApi.Configuration;
 
@@ -12,6 +11,5 @@ public sealed class PersistanceServiceInstaller : IServiceInstaller
         string connectionString = configuration.GetConnectionString("SqlServer");
 
         services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(connectionString));
-
     }
 }

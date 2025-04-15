@@ -1,5 +1,4 @@
-﻿
-namespace CleanArchitecture.WebApi.Configuration;
+﻿namespace CleanArchitecture.WebApi.Configuration;
 
 public sealed class PresentationServiceInstaller : IServiceInstaller
 {

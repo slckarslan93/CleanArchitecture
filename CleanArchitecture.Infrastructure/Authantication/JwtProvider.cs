@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using CleanArchitecture.Application.Abstractions;
 using CleanArchitecture.Application.Features.AuthFeatures.Commands.Logın;
 using CleanArchitecture.Domain.Entities;
@@ -14,10 +10,12 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace CleanArchitecture.Infrastructure.Authantication;
+
 public sealed class JwtProvider : IJwtProvider
 {
     private readonly JwtOptions _jwtOptions;
     private readonly UserManager<User> _userManager;
+
     public JwtProvider(IOptions<JwtOptions> jwtOptions, UserManager<User> userManager)
     {
         _jwtOptions = jwtOptions.Value;

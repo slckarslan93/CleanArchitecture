@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CleanArchitecture.Application.Features.UserRoleFeatures.Commands;
+﻿using CleanArchitecture.Application.Features.UserRoleFeatures.Commands;
 using CleanArchitecture.Application.Services;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Domain.Repositories;
@@ -13,6 +8,7 @@ namespace CleanArchitecture.Persistance.Services;
 public sealed class UserRoleService : IUserRoleService
 {
     private readonly IUserRoleRepository _repository;
+
     //private readonly IUnitOfWork _unitOfWork;
     public UserRoleService(IUserRoleRepository repository /*IUnitOfWork unitOfWork*/)
     {

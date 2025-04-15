@@ -1,5 +1,4 @@
-﻿
-using CleanArchitecture.Application.Services;
+﻿using CleanArchitecture.Application.Services;
 using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Persistance.Services;
 using CleanArchitecture.WebApi.Middlewares;

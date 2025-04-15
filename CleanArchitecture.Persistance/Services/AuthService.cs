@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Azure;
 using CleanArchitecture.Application.Abstractions;
 using CleanArchitecture.Application.Features.AuthFeatures.Commands.CreateNewTokenByRefreshToken;
 using CleanArchitecture.Application.Features.AuthFeatures.Commands.Logın;
@@ -17,6 +16,7 @@ public sealed class AuthService : IAuthService
     private readonly IMapper _mapper;
     private readonly IMailService _mailService;
     private readonly IJwtProvider _jwtProvider;
+
     public AuthService(UserManager<User> userManager, IMapper mapper, IMailService mailService, IJwtProvider jwtProvider)
     {
         _userManager = userManager;
@@ -28,9 +28,9 @@ public sealed class AuthService : IAuthService
     public async Task<LoginCommandResponse> CreateTokenByRefreshTokenAsync(CreateNewTokenByRefreshTokenCommand request, CancellationToken cancellationToken)
     {
         User user = await _userManager.FindByIdAsync(request.UserId);
-        if(user == null) throw new Exception("Kullanıcı bulunamadı!");
+        if (user == null) throw new Exception("Kullanıcı bulunamadı!");
 
-        if(user.RefreshToken != request.RefreshToken)
+        if (user.RefreshToken != request.RefreshToken)
             throw new Exception("Refresh token geçersiz!");
 
         if (user.RefreshTokenExpires < DateTime.UtcNow)
@@ -58,8 +58,8 @@ public sealed class AuthService : IAuthService
         }
 
         throw new Exception("Şifreyi yanlış girdiniz!");
-
     }
+
     public async Task RegisterAsync(RegisterCommand request)
     {
         User user = _mapper.Map<User>(request);
@@ -75,5 +75,4 @@ public sealed class AuthService : IAuthService
 
         //await _mailService.SendMailAsync(emails, "Mail Onayı", body);
     }
-
 }
